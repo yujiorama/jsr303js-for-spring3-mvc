@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -75,8 +76,8 @@ public class ValidationTestBean {
   @Size(min = 5, max = 10, message = "size must be 5 to 10 characters long")
   private String size;
 
-  // TODO @Valid, nested validation
-
+  @Valid
+  private TestBean nestedField;
 
   public boolean isAssertFalse() {
     return assertFalse;
@@ -212,5 +213,13 @@ public class ValidationTestBean {
 
   public void setNotEmpty(String notEmpty) {
     this.notEmpty = notEmpty;
+  }
+
+  public TestBean getNestedField() {
+    return nestedField;
+  }
+
+  public void setNestedField(TestBean nestedField) {
+    this.nestedField = nestedField;
   }
 }
